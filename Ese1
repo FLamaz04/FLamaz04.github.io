@@ -1,0 +1,21 @@
+
+<html>
+<body>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script> 
+
+<p id="demo">A Paragraph.</p> 
+
+<button type="button" onclick="myFunction()">Try it</button> 
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script> 
+
+</body>
+</html
