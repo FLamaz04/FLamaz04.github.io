@@ -8,37 +8,37 @@
                     this.numParziale=0;
                     this.operazione="";
                 }
-                Somma(){
-                    this.numeroParziale=parseInt(document.getElementById('schermo').value);
+                static Somma(a){
+                    this.numeroParziale=parseInt(a);
                     this.operazione='+';
-                    document.getElementById('schermo').value="";
                     return true;
                 }
-                Sottrazione(){
-                    this.numeroParziale=parseInt(document.getElementById('schermo').value);
+                static Sottrazione(b){
+                    this.numeroParziale=parseInt(b);
                     this.operazione='-';
                     document.getElementById('schermo').value="";
                     return true;
                 }
-                Moltiplicazone(){
-                    this.numeroParziale=parseInt(document.getElementById('schermo').value);
+                static Moltiplicazione(c){
+                    this.numeroParziale=parseInt(c);
                     this.operazione='x';
                     document.getElementById('schermo').value="";
                     return true;
                 }
-                Divisione(){
-                    this.numeroParziale=parseInt(document.getElementById('schermo').value);
+                static Divisione(d){
+                    this.numeroParziale=parseInt(d);
                     this.operazione='÷';
                     document.getElementById('schermo').value="";
                     return true;
                 }
-                InvertiSegno(){
+                static InvertiSegno(e){
                     document.getElementById('schermo').value*=-1;
                 }
-                Calcolo(){
+                static Calcolo(f){
                     if(this.operazione.value == '+'){
+                        this.numCorrente=parseInt(e);
                         let fine= this.numParziale+numCorrente;
-                        document.getElementById('schermo').value=fine;
+                        document.calcolatrice.getElementById('schermo').value=fine;
                     }
                     if(this.operazione.value == '-'){
                         let fine= this.numParziale-numCorrente;
@@ -56,31 +56,35 @@
                     return true;
                 }
             }
+
+            c=new Calcolatrice();
         </script>
+        
     </head>
     <body>
+        
         <div style="text-align: center;">
         <form id="calcolatrice" name="calculator">
             <input style="width: 200px" type="text" id="schermo" name="screen"><br>
             <input style="width: 100px" type="reset" id="resetta" name="resetta" value="AC">
             <input style="width: 50px" type="button" id="cancella" name="delete" value="C">
-            <input style="width: 50px" type="button" id="diviso" name="division" value="÷" onclick="return Divisione()"><br>
+            <input style="width: 50px" type="button" id="diviso" name="division" value="÷" onclick="c.Divisione(document.calcolatrice.getElementById('schermo').value)"><br>
             <input style="width: 50px" type="button" id="nove" name="nine" value="9" onclick="document.getElementById('schermo').value+=9">
             <input style="width: 50px" type="button" id="otto" name="eight" value="8" onclick="document.getElementById('schermo').value+=8">
             <input style="width: 50px" type="button" id="sette" name="seven" value="7" onclick="document.getElementById('schermo').value+=7">
-            <input style="width: 50px" type="button" id="moltiplicazione" name="multiplication" value="x" onclick="return Moltiplicazone()"><br>
+            <input style="width: 50px" type="submit" id="moltiplicazione" name="multiplication" value="x" onsubmit="c.Moltiplicazione(document.calcolatrice.getElementById('schermo').value)"><br>
             <input style="width: 50px" type="button" id="sei" name="six" value="6" onclick="document.getElementById('schermo').value+=6">
             <input style="width: 50px" type="button" id="cinque" name="five" value="5" onclick="document.getElementById('schermo').value+=5">
             <input style="width: 50px" type="button" id="quattro" name="FOUR" value="4" onclick="document.getElementById('schermo').value+=4">
-            <input style="width: 50px" type="button" id="sottrazione" name="subtraction" value="-" onclick="return Sottrazione()"><br>
+            <input style="width: 50px" type="submit" id="sottrazione" name="subtraction" value="-" onsubmit="c.Sottrazione(document.calcolatrice.getElementById('schermo').value)"><br>
             <input style="width: 50px" type="button" id="tre" name="three" value="3" onclick="document.getElementById('schermo').value+=3">
             <input style="width: 50px" type="button" id="due" name="two" value="2" onclick="document.getElementById('schermo').value+=2">
             <input style="width: 50px" type="button" id="uno" name="one" value="1" onclick="document.getElementById('schermo').value+=1">
-            <input style="width: 50px" type="button" id="somma" name="addition" value="+" onclick="return Somma()"><br>
+            <input style="width: 50px" type="submit" id="somma" name="addition" value="+" onsubmit="c.Somma(document.calcolatrice.getElementById('schermo').value)"><br>
             <input style="width: 50px" type="button" id="zero1" name="zero" value="0" onclick="document.getElementById('schermo').value+=0">
             <input style="width: 50px" type="button" id="decimale" name="decimal" value="." onclick="document.getElementById('schermo').value+='.'">
-            <input style="width: 50px" type="button" id="cambioSegno" name="signSwitch" value="+/-" onclick="return InvertiSegno()">
-            <input style="width: 50px" type="submit" id="risultato" name="risult" value="=" onclick="return Calcolo()">   
+            <input style="width: 50px" type="submit" id="cambioSegno" name="signSwitch" value="+/-" onsubmit="c.InvertiSegno()">
+            <input style="width: 50px" type="submit" id="risultato" name="risult" value="=" onsubmit="c.Calcolo(document.calcolatrice.getElementById('schermo').value)">   
         </form>
         </div>
     </body>
